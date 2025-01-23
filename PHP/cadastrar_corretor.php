@@ -28,12 +28,25 @@ if (strlen($name) < 2) {
     exit();
 }
 
-$sql = "INSERT INTO corretores (cpf, creci, name) VALUES ('$cpf', '$creci', '$name')";
-if ($conn->query($sql) === TRUE) {
+// Preparar a consulta SQL
+$stmt = $conn->prepare("INSERT INTO corretores (cpf, creci, name) VALUES (?, ?, ?)");
+if ($stmt === false) {
+    echo json_encode(['message' => "Erro na preparação da consulta: " . $conn->error]);
+    exit();
+}
+
+// Vincular os parâmetros
+$stmt->bind_param("sss", $cpf, $creci, $name);
+
+// Executar a consulta
+if ($stmt->execute()) {
     echo json_encode(['message' => "Corretor cadastrado com sucesso!"]);
 } else {
-    echo json_encode(['message' => "Erro: " . $conn->error]);
+    echo json_encode(['message' => "Erro: " . $stmt->error]);
 }
+
+// Fechar a declaração e a conexão
+$stmt->close();
 $conn->close();
 
 ?>
