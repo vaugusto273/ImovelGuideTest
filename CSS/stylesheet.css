@@ -47,6 +47,12 @@ form#cadas input[type="submit"] {
     border: none;
     cursor: pointer;
 }
+form#cadas input[type="submit"].edit-class{
+    background-color: green;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
 
 div#aviso {
     width: 100%;
@@ -82,10 +88,4 @@ div.alerta-sucesso {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 10px #000;
-}
-.green{
-    background-color: green;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
 }
