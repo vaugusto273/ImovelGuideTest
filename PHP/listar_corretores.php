@@ -7,20 +7,36 @@ $dbname = "cadastro_corretores";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
+    echo json_encode(['message' => "Conexão falhou: " . $conn->connect_error]);
+    exit();
 }
 
-$sql = "SELECT * FROM corretores";
-$result = $conn->query($sql);
+$cpf = $_POST['cpf'];
+$creci = $_POST['creci'];
+$name = $_POST['name'];
+$id = $_POST['id'];
 
-$corretores = [];
-if ($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $corretores[] = $row;
-    }
+// Validação dos campos
+if (strlen($cpf) != 11) {
+    echo json_encode(['message' => "Erro: CPF deve ter 11 caracteres."]);
+    exit();
+}
+if (strlen($creci) < 2) {
+    echo json_encode(['message' => "Erro: CRECI deve ter pelo menos 2 caracteres."]);
+    exit();
+}
+if (strlen($name) < 2) {
+    echo json_encode(['message' => "Erro: Nome deve ter pelo menos 2 caracteres."]);
+    exit();
 }
 
-echo json_encode($corretores);
+$sql = "UPDATE corretores SET name = '$name', cpf = '$cpf', creci = '$creci' WHERE id = $id";
+if ($conn->query($sql) === TRUE) {
+    echo json_encode(['message' => "Corretor editado com sucesso!"]);
+} else {
+    echo json_encode(['message' => "Erro: " . $conn->error]);
+}
+
 $conn->close();
 
 ?>
