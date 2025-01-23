@@ -23,17 +23,22 @@
                 <td colspan="2" id="nameColum"><input type="text" name="name" id="name" required placeholder="Digite seu nome" minlength="2" pattern="^[A-Za-zÀ-ÿ\s]{2,}$"></td>
             </tr>
             <tr>
-                <td colspan="2" id="submitColum"><input type="submit" class="submit-btn" value="Enviar"></td>
+                <td colspan="2" id="submitColum">
+                    <input type="submit" class="submit-btn" value="Enviar">
+                </td>
             </tr>
         </table>
     </form>
     <div id="CorretoresTable">
         <table>
             <tr>
-                <th>ID</th>
+                <th>ID
+                    <input type="button" value="▲" onclick="sortTable(0, 'asc')">
+                </th>
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>CRECI</th>
+                <th>Editar/Remover</th>
             </tr>
         </table>
 </body>
