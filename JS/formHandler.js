@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             data.forEach(corretor => {var row = table.insertRow();
             row.insertCell(0).innerText = corretor.id;
+            row.id = 'corretor-' + corretor.id;
             row.insertCell(1).innerText = corretor.name;
             row.insertCell(2).innerText = corretor.cpf;
             row.insertCell(3).innerText = corretor.creci;
@@ -69,7 +70,30 @@ document.addEventListener('DOMContentLoaded', function() {
 function editCorretor(id) {
     console.log('Editar corretor com ID:', id);
     if (confirm('Tem certeza que deseja editar este corretor?')) {
-        
+        var row = document.getElementById('corretor-' + id);
+        var cell = row.getElementsByTagName('td');
+        var nome = cell[1].innerText;
+        var CPF = cell[2].innerText;
+        var CRECI = cell[3].innerText;
+        var Elemnome = document.getElementById('name');
+        var Elemcpf = document.getElementById('cpf');
+        var Elemcreci = document.getElementById('creci');
+        var Elemedit = document.getElementById('editColum');
+        var Elemsubmit = document.getElementById('submitColum');
+
+        Elemnome.value = nome;
+        Elemcpf.value = CPF;
+        Elemcreci.value = CRECI;
+        Elemsubmit.classList.add('disabled');
+        Elemedit.classList.remove('disabled');
+        fetch('../PHP/excluir_corretor.php',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'id=' + id
+        })
+        .then(response => response.json())
     }
 
 }
@@ -77,6 +101,7 @@ function editCorretor(id) {
 function deleteCorretor(id) {
     console.log('Excluir corretor com ID:', id);
     if (confirm('Tem certeza que deseja excluir este corretor?')){
+
         fetch('../PHP/excluir_corretor.php',{
             method: 'POST',
             headers: {
@@ -86,7 +111,7 @@ function deleteCorretor(id) {
         })
         .then(response => response.json())
         .then(data => {
-            alert(data.message);
+            aviso.innerHTML = 'Corretor excluído com sucesso.';
             loadCorretores();
         })
         .catch(error => console.error('Erro ao excluir corretor:', error));
