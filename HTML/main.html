@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
     <title>Cadastrar Corretores</title>
 </head>
 <body>
-    <h3>Cadastro de Corretor</h3>
-    <div id="aviso"></div>
-    <form action="cadastrar_corretor.php" method="post">
-        <input type="text" name="cpf" id="cpf" required>
-        <input type="text" name="creci" id="creci" required>
-        <input type="text" name="name" id="name" required>
-        <input type="submit" value="Cadastrar">
+    <form action="cadastrar_corretor.php" method="post" id="cadas">
+        <h3>Cadastro de Corretor</h3>
+        <table>
+            <tr>
+                <td colspan="2"><div id="aviso"></div></td>
+            </tr>
+            <tr>
+                <td id="cpfColum"><input type="text" name="cpf" id="cpf" required placeholder="Digite seu CPF" maxlength="11" inputmode="numeric" pattern="^\d{11}$""></td>
+                <td id="creciColum"><input type="text" name="creci" id="creci" required placeholder="Digite seu Creci"></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="nameColum"><input type="text" name="name" id="name" required placeholder="Digite seu nome" minlength="2" pattern="^[A-Za-zÀ-ÿ\s]{2,}$"></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="submitColum"><input type="submit" class="submit-btn" value="Enviar"></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
