@@ -1,10 +1,11 @@
-body{
+body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
-form#cadas{
+
+form#cadas {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +18,8 @@ form#cadas{
     border-radius: 20px;
     box-shadow: 0 0 10px #000;
 }
-form#cadas input{
+
+form#cadas input {
     width: 100%;
     padding: 5px 0;
     margin: 5px 0;
@@ -25,41 +27,51 @@ form#cadas input{
     border: 1px solid #ccc;
 }
 
-table{
+table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 5px;
 }
-td{
+
+td {
     padding: 0 5px;
 }
-td#cpfColum{
+
+td#cpfColum {
     width: 20%;
 }
 
-form#cadas input[type="submit"]{
+form#cadas input[type="submit"] {
     background-color: #414141;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
-div#aviso{
+div#aviso {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
 }
-div.alerta-erro{
+
+div.alerta-erro {
     display: block;
     background-color: red;
     color: #fff;
 }
-div.alerta-sucesso{
+
+div.alerta-sucesso {
     display: block;
     background-color: green;
     color: #fff;
 }
-.disabled{
+
+.disabled {
     display: none;
+}
+
+#CorretoresTable{
+    align-items: center;
+    text-align: center;
 }
