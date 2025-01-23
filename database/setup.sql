@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS cadastro_corretores;
+USE cadastro_corretores;
+CREATE TABLE IF NOT EXISTS corretores(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    cpf VARCHAR(11) NOT NULL,
+    creci VARCHAR(20) NOT NULL,
+    name VARCHAR(100) NOT NULL
+);

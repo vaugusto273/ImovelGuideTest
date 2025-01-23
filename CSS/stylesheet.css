@@ -43,3 +43,23 @@ form#cadas input[type="submit"]{
     border: none;
     cursor: pointer;
 }
+
+div#aviso{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+div.alerta-erro{
+    display: block;
+    background-color: red;
+    color: #fff;
+}
+div.alerta-sucesso{
+    display: block;
+    background-color: green;
+    color: #fff;
+}
+.disabled{
+    display: none;
+}

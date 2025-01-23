@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
+    <link rel="icon" type="image/png" href="https://www.imovelguide.com.br/img/favicon.png">
+    <script src="../JS/formHandler.js"></script>
     <title>Cadastrar Corretores</title>
 </head>
 <body>
-    <form action="cadastrar_corretor.php" method="post" id="cadas">
+    <form id="cadas">
         <h3>Cadastro de Corretor</h3>
         <table>
             <tr>
-                <td colspan="2"><div id="aviso"></div></td>
+                <td colspan="2"><div id="aviso" class="disabled"></div></td>
             </tr>
             <tr>
                 <td id="cpfColum"><input type="text" name="cpf" id="cpf" required placeholder="Digite seu CPF" maxlength="11" inputmode="numeric" pattern="^\d{11}$""></td>
-                <td id="creciColum"><input type="text" name="creci" id="creci" required placeholder="Digite seu Creci"></td>
+                <td id="creciColum"><input type="text" name="creci" id="creci" required placeholder="Digite seu Creci" pattern="^[\d]{2,}$"></td>
             </tr>
             <tr>
                 <td colspan="2" id="nameColum"><input type="text" name="name" id="name" required placeholder="Digite seu nome" minlength="2" pattern="^[A-Za-zÀ-ÿ\s]{2,}$"></td>
