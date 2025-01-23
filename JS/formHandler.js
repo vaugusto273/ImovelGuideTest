@@ -70,6 +70,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     loadCorretores();
+    document.addEventListener('click', function(event) {
+        var aviso = document.getElementById('aviso');
+        aviso.classList.add('disabled');
+        aviso.classList.remove('alerta-sucesso');
+        aviso.classList.remove('alerta-erro');
+    });
 });
 
 function editCorretor(id) {
@@ -109,7 +115,10 @@ function deleteCorretor(id) {
         .then(response => response.json())
         .then(data => {
             var aviso = document.getElementById('aviso');
-            aviso.innerHTML = 'Corretor excluído com sucesso.';
+            aviso.innerHTML = 'Corretor deletado com sucesso.';
+            aviso.classList.remove('disabled');
+            aviso.classList.add('alerta-sucesso');
+            aviso.classList.remove('alerta-erro');
             loadCorretores();
         })
         .catch(error => console.error('Erro ao excluir corretor:', error));
